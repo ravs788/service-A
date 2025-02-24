@@ -6,7 +6,7 @@ name: Trigger tests
 on:
   # Triggers the workflow on push request events but only for the "develop" branch
   push:
-    branches: [ "develop" ]
+    branches: ["develop"]
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -37,12 +37,12 @@ jobs:
     needs: deploy-deploy-env
     strategy:
       matrix:
-        repos: ['ravs788/TestRepo']
+        repos: ["ravs788/TestRepo"]
     steps:
       - name: Dispatch event to repository
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrests.REPO_ACCESS_TOKEN_TO_TRIGGER_EVENTS }}
+          token: ${{ secrets.REPO_ACCESS_TOKEN_TO_TRIGGER_EVENTS }}
           repository: ${{ matrix.repos }}
           event-type: deployment-compleetd-notification-event
-          client-payload: '{"github":${{ toJson(github }}, "TEST_ENV":"DEVELOP","TAG":"${{ github.event.repository.name }}"}'
+          client-payload: '{"github":${{ toJson(github) }}, "TEST_ENV":"DEVELOP","TAG":"${{ github.event.repository.name }}"}'
