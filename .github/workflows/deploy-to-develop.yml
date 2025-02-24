@@ -32,7 +32,7 @@ jobs:
         run: echo "app deployed"
 
   notify:
-    runs-on: latest
+    runs-on: ubuntu-latest
     name: Notify test repos that deployemnt is completed in develop env and they can run their tests
     needs: deploy-deploy-env
     strategy:
