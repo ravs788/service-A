@@ -45,4 +45,4 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN_TO_TRIGGER_EVENTS }}
           repository: ${{ matrix.repos }}
           event-type: deployment-compleetd-notification-event
-          client-payload: '{"github":${{ toJson(github) }}, "TEST_ENV":"DEVELOP","TAG":"${{ github.event.repository.name }}"}'
+          client-payload: '{"github":${{ toJson(github) }}, "TEST_ENV" : "DEVELOP" ,"TAG" : "${{ github.event.repository.name }}"}'
